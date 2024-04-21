@@ -17,14 +17,23 @@ restaurant_data = api_data["restaurants"][:10]
 # print(restaurant_data)
 
 
+def format_rating(rating, review_count):
+    return f"{rating} ★ ({review_count} Reviews)"
+
+
 def display_restaurant_info(data):
     for restaurant in data:
         name = restaurant['name']
         cuisines = ", ".join([cuisine['name'] for cuisine in restaurant['cuisines']])
         rating = restaurant['rating']['starRating']
-        address = f"{restaurant['address']['firstLine']}, {restaurant['address']['postalCode']}, {restaurant['address']['city']}"
+        review_count = restaurant['rating']['count']
+        formatted_rating = format_rating(rating, review_count)
+        address = (f"{restaurant['address']['firstLine']}, "
+                   f"{restaurant['address']['postalCode']}, "
+                   f"{restaurant['address']['city']}"
+                   )
 
-        print(f"Name: {name}\nCuisines: {cuisines}\nRating: {rating}\nAddress: {address}\n")
+        print(f"Name: {name}\nCuisines: {cuisines}\nRating: {formatted_rating}\nAddress: {address}\n")
 
 
 display_restaurant_info(restaurant_data)
