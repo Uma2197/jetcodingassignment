@@ -15,8 +15,11 @@ def display_restaurant_info(data):
     for restaurant in data:
         name = restaurant['name']
         cuisines = ", ".join([cuisine['name'] for cuisine in restaurant['cuisines']])
+        rating = restaurant['rating']['starRating']
+        address = f"{restaurant['address']['firstLine']}, {restaurant['address']['postalCode']}, {restaurant['address']['city']}"
 
-        print(f"Name: {name}\nCuisines: {cuisines}")
+        print(f"Name: {name}\nCuisines: {cuisines}\nRating: {rating}\nAddress: {address}\n")
 
 
 display_restaurant_info(restaurant_data)
+
