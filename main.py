@@ -5,5 +5,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0'
 }
 response = requests.get(url=api_endpoint, headers=headers)
+response.raise_for_status()
 api_data = response.json()
-print(api_data)
+restaurant_data = response.json()["restaurants"]
+print(restaurant_data)
