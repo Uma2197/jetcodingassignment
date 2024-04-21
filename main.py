@@ -7,5 +7,5 @@ headers = {
 response = requests.get(url=api_endpoint, headers=headers)
 response.raise_for_status()
 api_data = response.json()
-restaurant_data = response.json()["restaurants"]
+restaurant_data = api_data["restaurants"]
 print(restaurant_data)
