@@ -14,8 +14,12 @@ restaurant_data = api_data["restaurants"]
 def display_restaurant_info(data):
     for restaurant in data:
         name = restaurant['name']
-        
-        print(f"Name: {name}")
+        cuisines = []
+        for cuisine in restaurant["cuisines"]:
+            cuisines.append(cuisine["name"])
+        cuisine = ",".join(cuisines)
+
+        print(f"Name: {name}\nCuisines: {cuisine}")
 
 
 display_restaurant_info(restaurant_data)
