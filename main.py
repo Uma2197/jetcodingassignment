@@ -1,6 +1,12 @@
 import requests
+import random
 
-api_endpoint = "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF"
+postcode_list = ["CT12EH", "BS14DJ", "L40TH", "NE97TY", "SW1A1AA", "CF118AZ", "M160RA", "EH11RE",
+                 "BN11AE", "CB74DL", "LS27HY", "G38AG", "PL40DW", "B263QJ", "DH45QZ", "BT71NN"]
+postcode = random.choice(postcode_list)
+print(f"Displaying information for the postcode: {postcode}\n")
+
+api_endpoint = f"https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/{postcode}"
 headers = {
     'User-Agent': 'Mozilla/5.0'
 }
@@ -22,4 +28,3 @@ def display_restaurant_info(data):
 
 
 display_restaurant_info(restaurant_data)
-
